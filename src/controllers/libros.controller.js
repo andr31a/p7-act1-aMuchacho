@@ -12,7 +12,8 @@ export const getLibros = async (req, res) => {
     const [rows] = await pool.query("SELECT * from libros");
     res.json(rows);
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
+    console.log(error);
   }
 };
 
@@ -25,7 +26,7 @@ export const getLibro = async (req, res) => {
       return res.status(404).json({ message: "Libro no encontrado." });
     res.json(rows[0]);
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -45,7 +46,7 @@ export const createLibros = async (req, res) => {
       saga,
     });
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -62,7 +63,7 @@ export const editLibros = async (req, res) => {
     const [rows] = await pool.query("SELECT * FROM libros WHERE id = ?", [id]);
     res.json(rows[0]);
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -75,6 +76,6 @@ export const deleteLibro = async (req, res) => {
       return res.status(404).json({ message: "Autor no encontrado." });
     res.sendStatus(204);
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };

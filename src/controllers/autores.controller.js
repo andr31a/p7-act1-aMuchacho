@@ -10,7 +10,7 @@ export const getAutores = async (req, res) => {
     const [rows] = await pool.query("SELECT * from autores");
     res.json(rows);
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -24,7 +24,7 @@ export const getAutor = async (req, res) => {
       return res.status(404).json({ message: "Autor no encontrado." });
     res.json(rows[0]);
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -42,7 +42,7 @@ export const createAutor = async (req, res) => {
       sexo,
     });
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -59,7 +59,7 @@ export const editAutor = async (req, res) => {
     const [rows] = await pool.query("SELECT * FROM autores WHERE id = ?", [id]);
     res.json(rows[0]);
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
@@ -72,6 +72,6 @@ export const deleteAutor = async (req, res) => {
       return res.status(404).json({ message: "Autor no encontrado." });
     res.sendStatus(204);
   } catch (error) {
-    res.sendStatus(500).json({ message: "something went wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };

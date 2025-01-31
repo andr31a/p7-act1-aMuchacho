@@ -1,10 +1,11 @@
 import { createPool } from "mysql2/promise";
 import {
-  DB_DATABASE,
+  PORT,
   DB_HOST,
-  DB_PASSWORD,
-  DB_PORT,
   DB_USER,
+  DB_PASSWORD,
+  DB_DATABASE,
+  DB_PORT,
 } from "./config.js";
 
 export const pool = createPool({
